@@ -1,0 +1,22 @@
+let Applicative =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Applicative/Type
+
+let Free = ./Type
+
+let iterA
+    :   ∀(f : Type → Type)
+      → ∀(g : Type → Type)
+      → ∀(a : Type)
+      → Applicative g
+      → (f (g a) → g a)
+      → Free f a
+      → g a
+    =   λ(f : Type → Type)
+      → λ(g : Type → Type)
+      → λ(a : Type)
+      → λ(AG : Applicative g)
+      → λ(phi : f (g a) → g a)
+      → λ(m : Free f a)
+      → m (g a) (AG.pure a) phi
+
+in  iterA

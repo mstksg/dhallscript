@@ -1,0 +1,16 @@
+let Applicative =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Applicative/Type
+
+let Free = ./Type
+
+let functor = ./functor
+
+let pure = ./pure
+
+let ap = ./ap
+
+let applicative
+    : ∀(f : Type → Type) → Applicative (Free f)
+    = λ(f : Type → Type) → functor f ∧ { ap = ap f, pure = pure f }
+
+in  applicative

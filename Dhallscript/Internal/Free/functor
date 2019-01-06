@@ -1,0 +1,12 @@
+let Functor =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Functor/Type
+
+let Free = ./Type
+
+let map = ./map
+
+let functor
+    : ∀(f : Type → Type) → Functor (Free f)
+    = λ(f : Type → Type) → { map = map f }
+
+in  functor
