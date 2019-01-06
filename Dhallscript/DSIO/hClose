@@ -1,0 +1,12 @@
+let DSIOF = ./DSIOF/Type
+
+let Handle = ../Handle/Type
+
+let DSIO = ./Type
+
+let hClose
+    : Handle → DSIO {}
+    =   λ(h : Handle)
+      → ./lift {} ((DSIOF {}).DSHClose { handle = h, continue = {=} })
+
+in  hClose

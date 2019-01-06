@@ -1,0 +1,15 @@
+let DSIOF = ./DSIOF/Type
+
+let Handle = ../Handle/Type
+
+let DSIO = ./Type
+
+let hPutStr
+    : Handle → Text → DSIO {}
+    =   λ(h : Handle)
+      → λ(t : Text)
+      → ./lift
+        {}
+        ((DSIOF {}).DSHPutStr { handle = h, text = t, continue = {=} })
+
+in  hPutStr

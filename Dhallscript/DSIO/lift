@@ -1,0 +1,11 @@
+let DSIOF = ./DSIOF/Type
+
+let DSIO = ./Type
+
+let DSIOFFunctor = ./DSIOF/functor
+
+let liftF = ../Internal/Free/liftF
+
+let lift : ∀(a : Type) → DSIOF a → DSIO a = liftF DSIOF DSIOFFunctor
+
+in  lift

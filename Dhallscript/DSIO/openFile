@@ -1,0 +1,19 @@
+let DSIOF = ./DSIOF/Type
+
+let Handle = ../Handle/Type
+
+let IOMode = ./IOMode
+
+let DSIO = ./Type
+
+let openFile
+    : Text → IOMode → DSIO Handle
+    =   λ(p : Text)
+      → λ(m : IOMode)
+      → ./lift
+        Handle
+        ( (DSIOF Handle).DSOpenFile
+          { path = p, ioMode = m, continue = λ(h : Handle) → h }
+        )
+
+in  openFile

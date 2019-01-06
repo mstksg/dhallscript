@@ -1,0 +1,8 @@
+let Functor =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Functor/Type
+
+let DSIOF = ./Type
+
+let functor : Functor DSIOF = { map = ./map }
+
+in  functor

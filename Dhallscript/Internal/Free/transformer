@@ -1,0 +1,21 @@
+let Functor =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Functor/Type
+
+let Transformer =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Transformer/Type
+
+let Monad =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Monad/Type
+
+let Free = ./Type
+
+let transformer
+    : Transformer Free
+    = { lift =
+            λ(m : Type → Type)
+          → λ(MM : Monad m)
+          → λ(a : Type)
+          → ./liftF m { map = MM.map } a
+      }
+
+in  transformer

@@ -1,0 +1,20 @@
+let Handle = ../../Handle/Type
+
+let IOMode = ../IOMode
+
+let DSIOF
+    : ∀(a : Type) → Type
+    =   λ(a : Type)
+      → < DSHGetLine :
+            { handle : Handle, continue : Text → a }
+        | DSHPutStr :
+            { handle : Handle, text : Text, continue : a }
+        | DSOpenFile :
+            { path : Text, ioMode : IOMode, continue : Handle → a }
+        | DSHClose :
+            { handle : Handle, continue : a }
+        | DSFFI :
+            { ffi : Text, continue : Text → a }
+        >
+
+in  DSIOF

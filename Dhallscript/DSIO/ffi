@@ -1,0 +1,12 @@
+let DSIOF = ./DSIOF/Type
+
+let Handle = ../Handle/Type
+
+let DSIO = ./Type
+
+let ffi
+    : Text → DSIO Text
+    =   λ(t : Text)
+      → ./lift Text ((DSIOF Text).DSFFI { ffi = t, continue = λ(r : Text) → r })
+
+in  ffi

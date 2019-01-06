@@ -1,0 +1,14 @@
+let DSIOF = ./DSIOF/Type
+
+let Handle = ../Handle/Type
+
+let DSIO = ./Type
+
+let hGetLine
+    : Handle → DSIO Text
+    =   λ(h : Handle)
+      → ./lift
+        Text
+        ((DSIOF Text).DSHGetLine { handle = h, continue = λ(t : Text) → t })
+
+in  hGetLine

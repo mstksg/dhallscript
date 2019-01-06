@@ -3,10 +3,8 @@ let Functor =
 
 let Free = ./Type
 
-let map = ./map
-
 let functor
     : ∀(f : Type → Type) → Functor (Free f)
-    = λ(f : Type → Type) → { map = map f }
+    = λ(f : Type → Type) → { map = ./map f }
 
 in  functor

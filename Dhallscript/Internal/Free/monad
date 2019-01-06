@@ -3,12 +3,8 @@ let Monad =
 
 let Free = ./Type
 
-let applicative = ./applicative
-
-let bind = ./bind
-
 let monad
     : ∀(f : Type → Type) → Monad (Free f)
-    = λ(f : Type → Type) → applicative f ∧ { bind = bind f }
+    = λ(f : Type → Type) → ./applicative f ∧ { bind = ./bind f }
 
 in  monad
