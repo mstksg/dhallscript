@@ -16,5 +16,6 @@ in    λ(f : Type → Type)
         , wrap =
             ./wrap f
         , liftF = \(FF : Functor f) -> ./liftF f FF
+        , foldFree = ./foldFree f
         }
       ∧ ./monad f ⫽ ./transformer

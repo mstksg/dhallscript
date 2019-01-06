@@ -18,3 +18,5 @@ let DSIOF
         >
 
 in  DSIOF
+
+-- TODO: getContents? fuel-based looping?
