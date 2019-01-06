@@ -7,15 +7,14 @@ let Functor =
       https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Functor/Type
 
 in    λ(f : Type → Type)
-    → λ(a : Type)
     →   { iter =
-            ./iter f a
+            ./iter f
         , iterA =
-            λ(g : Type → Type) → λ(AG : Applicative g) → ./iterA f g AG a
+            λ(g : Type → Type) → λ(AG : Applicative g) → ./iterA f g AG
         , retract =
-            ./retract f a
+            ./retract f
         , wrap =
-            ./wrap f a
-        , liftF = \(FF : Functor f) -> ./liftF f FF a
+            ./wrap f
+        , liftF = \(FF : Functor f) -> ./liftF f FF
         }
       ∧ ./monad f ⫽ ./transformer

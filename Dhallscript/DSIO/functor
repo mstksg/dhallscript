@@ -1,0 +1,8 @@
+let Functor =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Functor/Type
+
+let DSIO = ./Type
+
+let DSIOF = ./DSIOF/Type
+
+in  ../Internal/Free/functor DSIOF : Functor DSIO

@@ -1,0 +1,8 @@
+let Applicative =
+      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Applicative/Type
+
+let DSIO = ./Type
+
+let DSIOF = ./DSIOF/Type
+
+in  ../Internal/Free/applicative DSIOF : Applicative DSIO
