@@ -31,8 +31,12 @@ dependencies:
 library:
   source-dirs: src
   dependencies:
-  - operational
+  - free
   - text
+  - dhall
+  - mtl
+  - containers
+  - exceptions
 
 # executables:
 #   dhallscript-exe:
