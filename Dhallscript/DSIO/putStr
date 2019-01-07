@@ -1,7 +1,0 @@
-let DSIO = ./Type
-
-let handle = ../Handle/package.dhall
-
-let putStr : Text → DSIO {} = λ(t : Text) → ./hPutStr handle.stdout t
-
-in  putStr

@@ -1,7 +1,0 @@
-let Functor = ../../dhall-bhat/Functor/Type
-
-let DSIO = ./Type
-
-let DSIOF = ./DSIOF/Type
-
-in  ../../dhall-bhat/Free/functor DSIOF : Functor DSIO

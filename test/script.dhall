@@ -1,7 +1,15 @@
-let dsio = ../Dhallscript/DSIO/package.dhall
+let IOStream = ../Dhallscript/IOStream/Type
 
-in  dsio.bind Text {} dsio.getLine (\(t : Text) ->
-        dsio.bind Text {} dsio.getLine (\(u : Text) ->
-          dsio.putStrLn (t ++ u)
-        )
+let map = ../Dhallscript/IOStream/functor
+
+let IO = ../dhall-bhat/Free/Type IOStream
+
+let io = ../dhall-bhat/Free/package.dhall IOStream
+
+let iostream = ../Dhallscript/IOStream/package-lifted.dhall IO (io.liftF map)
+
+in  io.bind Text {} iostream.getLine (λ(t : Text) →
+      io.bind Text {} iostream.getLine (λ(u : Text) →
+        iostream.putStrLn (t ++ u)
+      )
     )

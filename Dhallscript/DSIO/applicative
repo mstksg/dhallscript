@@ -1,7 +1,0 @@
-let Applicative = ../../dhall-bhat/Applicative/Type
-
-let DSIO = ./Type
-
-let DSIOF = ./DSIOF/Type
-
-in  ../../dhall-bhat/Free/applicative DSIOF : Applicative DSIO

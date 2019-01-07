@@ -1,7 +1,0 @@
-let DSIO = ./Type
-
-let handle = ../Handle/package.dhall
-
-let getLine : DSIO Text = ./hGetLine handle.stdin
-
-in  getLine

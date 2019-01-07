@@ -1,0 +1,11 @@
+let IOStream = ./Type
+
+let Handle = ./Handle/Type
+
+let hPutStr
+    : Handle → Text → IOStream {}
+    =   λ(h : Handle)
+      → λ(t : Text)
+      → (IOStream {}).HPutStr { handle = h, text = t, continue = {=} }
+
+in  hPutStr

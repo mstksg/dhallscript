@@ -1,0 +1,9 @@
+let IOStream = ./Type
+
+let Handle = ./Handle/Type
+
+let hClose
+    : Handle → IOStream {}
+    = λ(h : Handle) → (IOStream {}).HClose { handle = h, continue = {=} }
+
+in  hClose

@@ -1,22 +1,20 @@
-let Handle = ../../Handle/Type
+let Handle = ./Handle/Type
 
-let IOMode = ../IOMode
+let IOMode = ./IOMode
 
-let DSIOF
+let IOStream
     : ∀(a : Type) → Type
     =   λ(a : Type)
-      → < DSHGetLine :
+      → < HGetLine :
             { handle : Handle, continue : Text → a }
-        | DSHPutStr :
+        | HPutStr :
             { handle : Handle, text : Text, continue : a }
-        | DSOpenFile :
+        | OpenFile :
             { path : Text, ioMode : IOMode, continue : Handle → a }
-        | DSHClose :
+        | HClose :
             { handle : Handle, continue : a }
-        | DSFFI :
-            { ffi : Text, continue : Text → a }
         >
 
-in  DSIOF
+in  IOStream
 
 -- TODO: getContents? fuel-based looping?

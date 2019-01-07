@@ -1,0 +1,33 @@
+let IOStream = ./Type
+
+let Handle = ./Handle/Type
+
+let IOMode = ./IOMode
+
+let compose = https://prelude.dhall-lang.org/Function/compose
+
+let map
+    : ∀(a : Type) → ∀(b : Type) → (a → b) → IOStream a → IOStream b
+    =   λ(a : Type)
+      → λ(b : Type)
+      → λ(f : a → b)
+      → λ(d0 : IOStream a)
+      → merge
+        { HGetLine =
+              λ(d : { handle : Handle, continue : Text → a })
+            → (IOStream b).HGetLine
+              (d ⫽ { continue = compose Text a b d.continue f })
+        , HPutStr =
+              λ(d : { handle : Handle, text : Text, continue : a })
+            → (IOStream b).HPutStr (d ⫽ { continue = f d.continue })
+        , OpenFile =
+              λ(d : { path : Text, ioMode : IOMode, continue : Handle → a })
+            → (IOStream b).OpenFile
+              (d ⫽ { continue = compose Handle a b d.continue f })
+        , HClose =
+              λ(d : { handle : Handle, continue : a })
+            → (IOStream b).HClose (d ⫽ { continue = f d.continue })
+        }
+        d0
+
+in  map

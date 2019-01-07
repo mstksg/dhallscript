@@ -1,0 +1,14 @@
+let IOStream = ./Type
+
+let Handle = ./Handle/Type
+
+let IOMode = ./IOMode
+
+let openFile
+    : Text → IOMode → IOStream Handle
+    =   λ(p : Text)
+      → λ(m : IOMode)
+      → (IOStream Handle).OpenFile
+        { path = p, ioMode = m, continue = λ(h : Handle) → h }
+
+in  openFile

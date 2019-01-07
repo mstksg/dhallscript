@@ -1,7 +1,0 @@
-let Functor = ../../../dhall-bhat/Functor/Type
-
-let DSIOF = ./Type
-
-let functor : Functor DSIOF = { map = ./map }
-
-in  functor

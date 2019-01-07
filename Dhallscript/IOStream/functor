@@ -1,0 +1,7 @@
+let Functor = ../../dhall-bhat/Functor/Type
+
+let IOStream = ./Type
+
+let functor : Functor IOStream = { map = ./map }
+
+in  functor

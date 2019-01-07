@@ -4,15 +4,15 @@ let state = ../dhall-bhat/State/package.dhall (List Text)
 
 let MState = ../dhall-bhat/State/monad (List Text)
 
-let DSIO = ../Dhallscript/DSIO/Type
+let IOStream = ../Dhallscript/IOStream/Type
 
-let IOMode = ../Dhallscript/DSIO/IOMode
+let IOMode = ../Dhallscript/IOStream/IOMode
 
-let Handle = ../Dhallscript/Handle/Type
+let Handle = ../Dhallscript/IOStream/Handle/Type
 
-let DSIOF = ../Dhallscript/DSIO/DSIOF/Type
+let IO = ../dhall-bhat/Free/Type IOStream
 
-let free = ../dhall-bhat/Free/package.dhall DSIOF
+let free = ../dhall-bhat/Free/package.dhall IOStream
 
 let log
     : ∀(a : Type) → Text → a → State a
@@ -26,32 +26,29 @@ let log
         (state.modify (λ(l : List Text) → l # [ t ]))
 
 let interp
-    : ∀(a : Type) → DSIOF a → State a
+    : ∀(a : Type) → IOStream a → State a
     =   λ(a : Type)
-      → λ(d0 : DSIOF a)
+      → λ(d0 : IOStream a)
       → merge
-        { DSHGetLine =
+        { HGetLine =
               λ(d : { handle : Handle, continue : Text → a })
             → log a "[getting line]" (d.continue "hello")
-        , DSHPutStr =
+        , HPutStr =
               λ(d : { handle : Handle, text : Text, continue : a })
             → log a d.text d.continue
-        , DSOpenFile =
+        , OpenFile =
               λ(d : { path : Text, ioMode : IOMode, continue : Handle → a })
             → log a ("[open file " ++ d.path ++ "]") (d.continue 3)
-        , DSHClose =
+        , HClose =
               λ(d : { handle : Handle, continue : a })
             → log a "[closing handle]" d.continue
-        , DSFFI =
-              λ(d : { ffi : Text, continue : Text → a })
-            → log a ("[ffi " ++ d.ffi ++ "]") (d.continue "ffi result")
         }
         d0
 
 let mock
-    : ∀(a : Type) → DSIO a → { val : a, state : List Text }
+    : ∀(a : Type) → IO a → { val : a, state : List Text }
     =   λ(a : Type)
-      → λ(d0 : DSIO a)
+      → λ(d0 : IO a)
       → free.foldFree State MState a interp d0 ([] : List Text)
 
 in  mock

@@ -1,0 +1,10 @@
+let IOStream = ./Type
+
+let Handle = ./Handle/Type
+
+let hGetLine
+    : Handle → IOStream Text
+    =   λ(h : Handle)
+      → (IOStream Text).HGetLine { handle = h, continue = λ(t : Text) → t }
+
+in  hGetLine
