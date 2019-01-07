@@ -1,0 +1,3 @@
+[submodule "dhall-bhat"]
+	path = dhall-bhat
+	url = git@github.com:mstksg/dhall-bhat.git

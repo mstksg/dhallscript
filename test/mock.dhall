@@ -1,14 +1,8 @@
-let State =
-      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/State/Type
-      (List Text)
+let State = ../dhall-bhat/State/Type (List Text)
 
-let state =
-      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/State/package.dhall
-      (List Text)
+let state = ../dhall-bhat/State/package.dhall (List Text)
 
-let MState =
-      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/State/monad
-      (List Text)
+let MState = ../dhall-bhat/State/monad (List Text)
 
 let DSIO = ../Dhallscript/DSIO/Type
 
@@ -18,7 +12,7 @@ let Handle = ../Dhallscript/Handle/Type
 
 let DSIOF = ../Dhallscript/DSIO/DSIOF/Type
 
-let free = ../Dhallscript/Internal/Free/package.dhall DSIOF
+let free = ../dhall-bhat/Free/package.dhall DSIOF
 
 let log
     : ∀(a : Type) → Text → a → State a

@@ -1,8 +1,7 @@
-let Monad =
-      https://raw.githubusercontent.com/FormationAI/dhall-bhat/master/Monad/Type
+let Monad = ../../dhall-bhat/Monad/Type
 
 let DSIO = ./Type
 
 let DSIOF = ./DSIOF/Type
 
-in  ../Internal/Free/monad DSIOF : Monad DSIO
+in  ../../dhall-bhat/Free/monad DSIOF : Monad DSIO

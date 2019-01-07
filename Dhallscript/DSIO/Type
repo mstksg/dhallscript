@@ -1,1 +1,1 @@
-let Free = ../Internal/Free/Type in Free ./DSIOF/Type
+let Free = ../../dhall-bhat/Free/Type in Free ./DSIOF/Type
