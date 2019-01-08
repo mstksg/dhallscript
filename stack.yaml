@@ -34,10 +34,15 @@ resolver: nightly-2019-01-03
 #  - wai
 packages:
 - .
+
 # Dependency packages to be pulled from upstream that are not in the resolver
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
-# extra-deps: []
+extra-deps:
+- github: mstksg/dhall-haskell
+  commit: 17fd6c35bff17671be93dcdc27346ac3857437c9
+  subdirs:
+  - dhall
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
